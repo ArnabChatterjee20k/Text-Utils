@@ -15,12 +15,13 @@ export default function TextForm(props) {
     }
 
     const calc = ()=>{
-        let check = new RegExp("[A-Za-z_]+")
+        let check = /^[^\sa-z_]+$/i
         if (check.test(text)){
-            alert("Plz enter valid character")
+            alert(text.search(check))
+            setText(String(eval(text))) // string since trim will give error in case if text not string. eval returns a Number
         }
         else{
-            setText(String(eval(text))) // string since trim will give error in case if text not string. eval returns a Number
+            alert("Plz enter valid character")
         }
     } 
     // this must be present at the top level of the functional component before using them.
@@ -34,10 +35,10 @@ export default function TextForm(props) {
                 <div className="mb-3">
                     <textarea className="form-control p-3" name="text" id="text" rows="8" placeholder='Enter Your Text..' value={text} onChange={handle_change}></textarea>
                 </div>
-                <button className="btn btn-primary mx-2" onClick={handle_uppercase}>Convert To UPPERCASE</button>
-                <button className="btn btn-primary mx-2" onClick={handle_lowercase}>Convert To lowercase</button>
-                <button className="btn btn-primary mx-2" onClick={calc}>Calculate</button>
-                <button className="btn btn-danger mx-2" onClick={()=>setText("")}>Reset</button>
+                <button className="btn btn-primary m-2" onClick={handle_uppercase}>Convert To UPPERCASE</button>
+                <button className="btn btn-primary m-2" onClick={handle_lowercase}>Convert To lowercase</button>
+                <button className="btn btn-primary m-2" onClick={calc}>Calculate</button>
+                <button className="btn btn-danger m-2" onClick={()=>setText("")}>Reset</button>
             </div>
             <div className="container my-3 py-3">
                 <h3>Your Text Summary</h3>
