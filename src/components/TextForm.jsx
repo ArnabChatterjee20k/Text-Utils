@@ -14,6 +14,15 @@ export default function TextForm(props) {
         setText(text.toLowerCase())
     }
 
+    const calc = ()=>{
+        let check = new RegExp("[A-Za-z_]+")
+        if (check.test(text)){
+            alert("Plz enter valid character")
+        }
+        else{
+            setText(String(eval(text))) // string since trim will give error in case if text not string. eval returns a Number
+        }
+    } 
     // this must be present at the top level of the functional component before using them.
     // const default_val = "Enter text here";
     // const [text , setText] = useState()
@@ -27,22 +36,24 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary mx-2" onClick={handle_uppercase}>Convert To UPPERCASE</button>
                 <button className="btn btn-primary mx-2" onClick={handle_lowercase}>Convert To lowercase</button>
-                {/* <button className="btn btn-danger mx-2" onClick={()=>{setText(default_val)}}>Reset</button> */}
+                <button className="btn btn-primary mx-2" onClick={calc}>Calculate</button>
+                <button className="btn btn-danger mx-2" onClick={()=>setText("")}>Reset</button>
             </div>
             <div className="container my-3 py-3">
                 <h3>Your Text Summary</h3>
                 <ul>
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()==""? 0 : text.split(" ").length}</b> words
+                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()===""? 0 : text.split(" ").length}</b> words
                     </li>
 
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()==""? 0 : text.length}</b> characters
+                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()===""? 0 : text.length}</b> characters
                     </li>
 
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()==""? 0 : 1 / 125 * text.length}</b> Minutes reading time
+                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim()===""? 0 : 1 / 125 * text.length}</b> Minutes reading time
                     </li>
+                    {eval}
                 </ul>
                 <div className='p-1'>
                     <h3>Preview</h3>
