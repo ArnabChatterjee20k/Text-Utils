@@ -25,9 +25,12 @@ export default function Navbar(props) {
                 <button className="btn btn-outline-success" type="submit">Search</button>
               </form>
               : null}
+            <div className="color_tab m-2">
+              <input type="color" className='border-0' name="choose_color" id="choose_color"  style={{cursor:"pointer"}} data-bs-toggle="tooltip" data-bs-placement="top" title="Custom Body Color" onChange={(e)=>{props.toggle_body_color(e.target.value)}}/>
+            </div>
             <div class="form-check form-switch my-3">
-              <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.toggle_function}/>
-              <label className={`form-check-label text-${props.mode==="dark"?"light":"dark"}`} htmlFor="flexSwitchCheckDefault">Dark Mode</label>
+              <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.toggle_function} />
+              <label className={`form-check-label text-${props.mode === "dark" ? "light" : "dark"}`} htmlFor="flexSwitchCheckDefault">Dark Mode</label>
             </div>
           </div>
         </div>
