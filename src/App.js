@@ -12,6 +12,9 @@ function App() {
       type : type , 
       message : message
     })
+    setTimeout(() => {
+      setAlert(null) // for removing the component after 3sec
+    }, 3000);
   }
 
   const toggle_mode = ()=>{
@@ -31,7 +34,7 @@ function App() {
     <div>
       <Navbar title="TextUtils" about_text="About Text Utils" search={false} mode={mode} toggle_function={toggle_mode}/>
       <Alert alert={alert}/>
-        <TextForm heading="Enter Your Text To Analyse" mode={mode}/>
+        <TextForm heading="Enter Your Text To Analyse" mode={mode} render_alert={render_alert}/>
         {/* <About/> */}
     </div>
   );

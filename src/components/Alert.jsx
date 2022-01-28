@@ -11,7 +11,7 @@ export default function Alert(props) {
         
         {/* Here if props.alert null then it evaluates false and evaluation pointer stops. If not null then it will go forward untill false appears to stop the pointer. Snce alert render can't be false so when alert is not null that means it is true then then pointer stops at the alert div only.  */}
         {props.alert && <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
-            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {/* We are removing the dismiss button as if the message dismissed then the message will not come again */}
             <strong className='p-3'>{props.alert.type}</strong>{props.alert.message}
         </div>}
     </div>;

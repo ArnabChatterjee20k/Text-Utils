@@ -8,29 +8,34 @@ export default function TextForm(props) {
 
     const handle_uppercase = () => {
         setText(text.toUpperCase())
+        props.render_alert("success","Converted to Uppercase")
     }
-
+    
     const handle_lowercase = () => {
         setText(text.toLowerCase())
+        props.render_alert("success","Converted to Lowercase")
     }
-
+    
     const calc = () => {
         let check = /^[^\sa-z_]+$/i
         if (check.test(text)) {
             setText(String(eval(text))) // string since trim will give error in case if text not string. eval returns a Number
+            props.render_alert("success","Calculation Done")
         }
         else {
-            alert("Plz enter valid character")
+            props.render_alert("danger","Enter valid characters")
         }
     }
-
+    
     const remove_extra_spaces = ()=>{
         let new_text = text.split(/[ ]+/); // split by getting one or more spaces. + due to one or more spaces
         setText(new_text.join(" ")) // joining all words by one space
+        props.render_alert("success","Extra spaces removed")
     }
-
+    
     const handle_copy = ()=>{
         navigator.clipboard.writeText(text)
+        props.render_alert("success","Copied to Clipboard")
     } 
 
     // this must be present at the top level of the functional component before using them.
@@ -55,21 +60,21 @@ export default function TextForm(props) {
                 <h3>Your Text Summary</h3>
                 <ul>
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : text.split(" ").length}</b> words
+                        <b className="text-warning" style={{fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : text.split(" ").length}</b> words
                     </li>
 
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : text.length}</b> characters
+                        <b className="text-warning" style={{fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : text.length}</b> characters
                     </li>
 
                     <li>
-                        <b style={{ color: "red", fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : 1 / 125 * text.length}</b> Minutes reading time
+                        <b className="text-warning" style={{fontSize: "1.35rem" }}>{text.trim() === "" ? 0 : 1 / 125 * text.length}</b> Minutes reading time
                     </li>
                     
                 </ul>
                 <div className='p-1'>
                     <h3>Preview</h3>
-                    <p>{text}</p>
+                    <p>{text.length>0?text:"Enter text to preview it."}</p>
                 </div>
             </div>
         </>
