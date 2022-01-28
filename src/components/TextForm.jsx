@@ -39,10 +39,10 @@ export default function TextForm(props) {
     const [text, setText] = useState("") // array destructuring
     return (
         <>
-            <div className="container my-3 py-3">
+            <div className="container my-3 py-3"  style={{color : props.mode==="dark"?"white":"black"}}>
                 <h2 className='my-3'>{props.heading}</h2>
                 <div className="mb-3">
-                    <textarea className="form-control p-3" name="text" id="text" rows="8" placeholder='Enter Your Text..' value={text} onChange={handle_change}></textarea>
+                    <textarea className="form-control p-3" name="text" id="text" rows="8" placeholder='Enter Your Text..' value={text} onChange={handle_change} style={{backgroundColor : props.mode==="dark"?"grey":"white",color:props.mode==="dark"?"white":"black"}}></textarea>
                 </div>
                 <button className="btn btn-primary m-2" onClick={handle_uppercase}>Convert To UPPERCASE</button>
                 <button className="btn btn-primary m-2" onClick={handle_lowercase}>Convert To lowercase</button>
@@ -51,7 +51,7 @@ export default function TextForm(props) {
                 <button className="btn btn-success m-2" onClick={handle_copy}>Copy Text</button>
                 <button className="btn btn-danger m-2" onClick={() => setText("")}>Reset</button>
             </div>
-            <div className="container my-3 py-3">
+            <div className="container my-3 py-3" style={{color : props.mode==="dark"?"white":"black"}}>
                 <h3>Your Text Summary</h3>
                 <ul>
                     <li>
