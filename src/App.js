@@ -59,7 +59,7 @@ function App() {
         <Switch>
 
           <Route exact path="/about">
-            <About />
+            <About body_col={bodymode} mode={mode}/>
           </Route>
           <Route exact path="/">
             <TextForm heading="Enter Your Text To Analyse" mode={mode} render_alert={render_alert} body_col={bodymode} />
