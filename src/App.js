@@ -27,6 +27,18 @@ function App() {
       // document.body.style.backgroundColor=bodymode // it is not working as useState setter function repaints the ui and js is async in nature so repaint takes time so the bodymode value also takes time to change so it body color not getting the new color rather it gets the previous value. After repainting of the component bodymode gets the new value.
       // better to use useEffect hook
       render_alert("success","Dark Mode Enabled")
+
+      // Changing title dynamically
+      // document.title = "Dark Mode"
+
+      // Changing the title with time intervals 
+      // setInterval(() => {
+      //   document.title = "Text Utils is Amazing"
+      // }, 2000);
+      
+      // setInterval(() => {
+      //   document.title = "Install it now"
+      // }, 1500);
     }
     else{
       setmode("light")
