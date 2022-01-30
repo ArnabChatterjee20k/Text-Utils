@@ -1,3 +1,15 @@
+# Website Link(deployed using Netlify)
+<div><a href="https://pedantic-kilby-aca0dd.netlify.app">Text Utils</a></div>
+
+# Features
+<ul>
+<li>Single Page App</li>
+<li>Case Converter</li>
+<li>Extra Space Remover</li>
+<li>Calculation with validations</li>
+<li>Dark Mode</li>
+<li>Custom Body Color Chooser</li>
+</ul>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
