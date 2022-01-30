@@ -46,7 +46,7 @@ export default function TextForm(props) {
     // to disabled btns if no letter is present in the textbox
     useEffect(() => {
         let btns = document.querySelectorAll(".btn")
-        text.length===0?btns.forEach(e=>e.disabled = true):btns.forEach(e=>{e.disabled=false})
+        text.split("").filter(e => e !== " " & e!=="\n").length===0?btns.forEach(e=>e.disabled = true):btns.forEach(e=>{e.disabled=false})
     }, [text]);
 
     return (
@@ -54,7 +54,7 @@ export default function TextForm(props) {
             <div className="container my-3 py-3" style={{ color: props.mode === "dark" ? "white" : "black" }}>
                 <h2 className='my-3'>{props.heading}</h2>
                 <div className="mb-3">
-                    <textarea className="form-control p-3" name="text" id="text" rows="8" placeholder='Enter Your Text..' value={text} onChange={handle_change} style={{ backgroundColor: props.body_col, color: props.mode === "dark" ? "white" : "black" }}></textarea>
+                    <textarea className="form-control p-3" name="text" id="text" rows="8" placeholder='Enter Your Text..' value={text} onChange={handle_change} style={{ backgroundColor: props.mode==="dark"?"#e8e8e8":"white" }}></textarea>
                 </div>
                 <button className="btn btn-primary m-2" onClick={handle_uppercase}>Convert To UPPERCASE</button>
                 <button className="btn btn-primary m-2" onClick={handle_lowercase}>Convert To lowercase</button>
@@ -68,16 +68,16 @@ export default function TextForm(props) {
                 <ul>
                     <li>
                         {/* word means split by space. character means split every letter*/}
-                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{text.length > 0 ? text.split(" ").filter(e => e.length !== 0).length : 0}</b> words
+                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{text.length > 0 ? text.split(/\s+/).filter(e => e.length !== 0).length : 0}</b> words
                     </li>
 
                     <li>
-                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{text.length > 0 ? text.split("").filter(e => e !== " ").length : 0}</b> characters
+                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{text.length > 0 ? text.split("").filter(e => e !== " " & e!=="\n").length : 0}</b> characters
                     </li>
 
                     <li>
                         {/* divding the output of the condition(total characters without any spaces) by 125 */}
-                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{(text.length > 0 ? text.split("").filter(e => e !== " ").length : 0) / 125}</b> Minutes reading time
+                        <b className="text-warning" style={{ fontSize: "1.35rem" }}>{(text.length > 0 ? text.split("").filter(e => e !== " " & e!=="\n").length : 0) / 125}</b> Minutes reading time
                     </li>
 
                 </ul>
